@@ -61,14 +61,15 @@ class BurgerBuilder extends Component {
         Object.keys(this.state.ingredients).forEach(key => {
             disabledInfo[key] = disabledInfo[key] <= 0
         });
-        
+
         return (
             <>
                 <Burger ingredients={this.state.ingredients}/>
                 <BuildControls
                     ingredientAdded={this.addIngredientHandler}
                     ingredientRemoved={this.removeIngredientHandler}
-                    disabled={disabledInfo}/>
+                    disabled={disabledInfo}
+                    price={this.state.totalPrice}/>
             </>
         );
     }
