@@ -72,12 +72,18 @@ class BurgerBuilder extends Component {
     };
 
     render() {
-        const disabledInfo = {
-            ...this.state.ingredients
-        };
-        Object.keys(this.state.ingredients).forEach(key => {
-            disabledInfo[key] = disabledInfo[key] <= 0
-        });
+        // const disabledInfo = {
+        //     ...this.state.ingredients
+        // };
+        // Object.keys(this.state.ingredients).forEach(key => {
+        //     disabledInfo[key] = disabledInfo[key] <= 0
+        // });
+
+        const disabledInfo = Object.assign(
+            ...Object.entries(this.state.ingredients)
+                .map(([key, value]) => ({[key]: value <= 0}))
+        );
+
 
         return (
             <>
